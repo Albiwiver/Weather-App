@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App Clima</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/output.css">
+    <style>
+        .bg-custom-mobile {
+          background-image: url('assets/mobile-bg.svg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        .bg-custom-tablet {
+          background-image: url('assets/tablet-bg.svg');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+      </style>
+</head>
+    <body id="weather-background" class="bg-[url('https://images.pexels.com/photos/3933949/pexels-photo-3933949.jpeg')] min-h-screen font-roboto">
+ 
+    <header class="flex justify-between items-center w-full px-6 mt-4 md:px-8 lg:px-16 lg:mt-8 xl:px-28 xl:mt-12 2xl:px-36 2xl:mt-16 lg:hidden">
+        <img src="assets/logo.svg" alt="logo app clima" class="sm:w-15 sm:h-8 lg:w-20 lg:h-10 xl:w-24 xl:h-12 2xl:w-28 2xl:h-14">
+        <div class="flex items-center  border-b-2 border-white space-x-2 lg:hidden">
+            <input id="ciudad-input" value="" type="text" class="bg-transparent text-white w-30 sm:text-lg sm:w-40 outline-0 autofill:bg-transparent focus:bg-transparent" placeholder="Buscar ciudad...">
+            <button id="buscar-btn" class="cursor-pointer">
+                <img src="assets/search.svg" alt="logo search" class="w-4 h-4 sm:w-5 sm:h-5">
+            </button>
+        </div>
+    </header>
+    <div class="mx-auto h-screen w-full flex flex-col items-center lg:flex-row">
+        
+        <div class="h-1/3 flex w-full lg:justify-between lg:flex-col lg:flex lg:h-screen lg:w-3/5">
+
+            <div class="hidden lg:flex justify-start items-start w-full h-1/2 lg:mt-14 lg:pl-16 xl:pl-28 2xl:pl-40">
+                <img src="assets/logo.svg" alt="logo app clima" class="sm:w-15 sm:h-8 lg:w-20 lg:h-10 xl:w-28 xl:h-14 2xl:w-36 2xl:h-16">
+            </div>
+
+            <div class="flex justify-start items-end lg:flex lg:justify-start lg:items-end lg:w-full lg:h-1/2">
+                <div class="flex items-center justify-center text-white mb-10 ml-10 sm:mb-14 sm:ml-20 md:ml-28 lg:mb-14 lg:ml-20 xl:mb-20 xl:ml-28 2xl:ml-48  space-x-4">
+                    <p class="text-6xl sm:text-7xl lg:text-9xl xl:text-[140px] 2xl:text-[180px]" id="temperatura"></p>
+                    <div>
+                        <p class="text-3xl sm:text-4xl lg:text-5xl xl:text-7xl" id="ciudad"></p>
+                        <p class="text-xs sm:text-sm lg:text-lg xl:text-2xl 2xl:text-2xl" id="fecha-hora"></p>
+                    </div>                   
+                    <div class=" flex text-center items-center justify-center 2xl:ml-3" id="clima-icon"></div>
+                </div>
+            </div>
+
+            
+
+        </div>
+
+        <div class="h-2/3 w-full backdrop-blur-sm border-t-5 border-gray-600 flex justify-center items-center text-sm sm:text-base  lg:h-screen lg:pr-20 lg:w-2/5 lg:border-l-5 lg:border-t-0">            
+        
+            <div class=" flex flex-col h-5/6 w-6/8 items-center justify-center border-b-1 border-b-white lg:text-lg xl:text-xl 2xl:text-2xl text-center sm:w-1/2 lg:h-full lg:text:start lg:w-4/5 lg:items-start lg:justify-start"> 
+
+                
+                <div class="lg:flex justify-between items-center  border-b-2 border-white space-x-2 w-full mb- hidden mt-16">
+                    <input id="ciudad-input-sidebar" value="" type="text" class="bg-transparent text-white outline-0 mb-1" placeholder="Buscar ciudad...">
+                    <button id="buscar-btn-sidebar" class="cursor-pointer">
+                        <img src="assets/search.svg" alt="logo search" class="w-6 h-6 mb-1">
+                    </button>
+                </div>
+                
+                
+
+
+
+                <p class="text-white lg:mt-16">Detalles del clima...</p>
+                <p id="estado-clima" class="font-bold text-white uppercase mt-10 lg:mt-16 xl:mt-16"></p>
+                <div class="flex items-center justify-between w-full mt-10 lg:mt-16 xl:mt-20">
+                    <p class="text-white" >Temp max</p>
+                    <div class="flex items-center justify-center space-x-4 lg:space-x-6">
+                        <p class="text-white" id="temp-max"></p>
+                        <i id="temp-max-icon" class="w-2.5 h-6"></i>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between w-full mt-10 lg:mt-10 xl:mt-20">
+                    <p class="text-white">Temp min</p>
+                    <div class="flex items-center justify-center space-x-4 lg:space-x-6">
+                        <p class="text-white" id="temp-min"></p>
+                        <i id="temp-min-icon" class="w-2.5 h-6"></i>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between w-full mt-10 lg:mt-10 xl:mt-20">
+                    <p class="text-white" >Humedad</p>
+                    <div class="flex items-center justify-center space-x-4 lg:space-x-6">
+                        <p class="text-white" id="humedad"></p>
+                        <i id="humedad-icon" class="w-2.5 h-6"></i>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between w-full mt-10 lg:mt-10 xl:mt-20">
+                    <p class="text-white" >Nubes</p>
+                    <div class="flex items-center justify-center space-x-4 lg:space-x-6">
+                        <p class="text-white" id="nubes"></p>
+                        <i id="nubes-icon" class="w-2.5 h-6"></i>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between w-full mt-10 lg:mt-10 xl:mt-20">
+                    <p class="text-white" >Viento</p>
+                    <div class="flex items-center justify-center space-x-4 lg:space-x-6">
+                        <p class="text-white" id="viento"></p>
+                        <i id="viento-icon" class="w-2.5 h-6"></i>
+                    </div>
+                </div>
+                
+                             
+            </div>
+        </div>
+
+
+
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/src/app.js"></script>
+</body>
+</html>

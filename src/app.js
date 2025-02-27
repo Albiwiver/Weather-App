@@ -184,6 +184,12 @@ function keypressListener (id) {
             }
         }
     });
+    document.getElementById(id).addEventListener("touchstart", () => {
+        const ciudad = document.getElementById(id).value.trim();
+        if (ciudad !== "") {
+            obtenerClima(ciudad);
+        }
+    });
 }
 
 

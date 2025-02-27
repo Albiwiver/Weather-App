@@ -194,6 +194,12 @@ function clickListener (buttonId, inputId) {
             obtenerClima(ciudad);
         }
     });
+    document.getElementById(buttonId).addEventListener("touchstart", () => {
+        const ciudad = document.getElementById(inputId).value.trim();
+        if (ciudad !== "") {
+            obtenerClima(ciudad);
+        }
+    });
 }
 
 keypressListener("ciudad-input-sidebar");

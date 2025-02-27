@@ -184,11 +184,23 @@ function keypressListener (id) {
             }
         }
     });
+    document.getElementById(id).addEventListener("touchstart", () => {
+        const ciudad = document.getElementById(id).value.trim();
+        if (ciudad !== "") {
+            obtenerClima(ciudad);
+        }
+    });
 }
 
 
 function clickListener (buttonId, inputId) {
     document.getElementById(buttonId).addEventListener("click", () => {
+        const ciudad = document.getElementById(inputId).value.trim();
+        if (ciudad !== "") {
+            obtenerClima(ciudad);
+        }
+    });
+    document.getElementById(buttonId).addEventListener("touchstart", () => {
         const ciudad = document.getElementById(inputId).value.trim();
         if (ciudad !== "") {
             obtenerClima(ciudad);

@@ -589,6 +589,9 @@
   .isolation-auto {
     isolation: auto;
   }
+  .z-10 {
+    z-index: 10;
+  }
   .z-auto {
     z-index: auto;
   }

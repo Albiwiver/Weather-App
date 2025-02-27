@@ -184,7 +184,7 @@ function keypressListener (id) {
             }
         }
     });
-    document.getElementById(id).addEventListener("touchstart", () => {
+    document.getElementById(id).addEventListener("touchend", () => {
         const ciudad = document.getElementById(id).value.trim();
         if (ciudad !== "") {
             obtenerClima(ciudad);
@@ -200,7 +200,7 @@ function clickListener (buttonId, inputId) {
             obtenerClima(ciudad);
         }
     });
-    document.getElementById(buttonId).addEventListener("touchstart", () => {
+    document.getElementById(buttonId).addEventListener("touchend", () => {
         const ciudad = document.getElementById(inputId).value.trim();
         if (ciudad !== "") {
             obtenerClima(ciudad);
